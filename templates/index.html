@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block content %}
+	<div class="container">
+		<div class="container2">
+			<h1>Seja Bem-vindo(a) {{ user.get_full_name }}</h1>
+			<img src="{{ user.get_imagem }}" alt=".">
+		</div>
+		<a href="{% url 'logout' %}">Logout</a>
+	</div>
+{% endblock %}

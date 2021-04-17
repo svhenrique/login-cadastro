@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load bootstrap4 %}
+{% block content %}
+<div class="containet">
+	<h1>Faça o login</h1>
+	<form method="post" class="form" autocomplete="off" enctype="multipart/form-data">
+		{% csrf_token %}
+		{% bootstrap_form form %}
+		{% buttons %}
+			<button type="submit" class="btn btn-primary">Logar</button>
+		{% endbuttons %}
+	</form>
+	<a 	href="{% url 'cadastro' %}">
+		<button type="submit" class="btn btn-primary">Cadastre-se</button>
+	</a>
+
+	<!--
+	Depis que alan trazer a página dele, vincular
+	{% if form.errors %}
+            {% for error, message in form.errors.items %}
+                <h1>{{ message }}</h1>
+            {% endfor %}
+	{% endif %}
+	-->
+</div>
+{% endblock %}
