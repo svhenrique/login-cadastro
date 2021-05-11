@@ -6,7 +6,7 @@ from django.views.generic import FormView, TemplateView
 
 """
 Criar class based view para página de registro e deixar página vinculada ao admin
-quieto krl
+quieto
 
 link para ajuda: https://www.youtube.com/watch?v=Ev5xgwndmfc&feature=emb_title
 """
