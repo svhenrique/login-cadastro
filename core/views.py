@@ -2,7 +2,7 @@ from django.shortcuts import redirect
 from django.urls import reverse_lazy
 from .forms import CustomUsuarioCreateForm
 from django.views.generic import FormView, TemplateView
-
+from django.contrib.auth.views import LoginView
 
 """
 Criar class based view para página de registro e deixar página vinculada ao admin
@@ -41,4 +41,6 @@ class CadastroView(FormView):
     def form_invalid(self, form, *args, **kwargs):
         return super(CadastroView, self).form_invalid(form)
 
+class LogarView(LoginView):
+    template_name = 'login.html'
 
