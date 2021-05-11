@@ -1,5 +1,6 @@
 asgiref==3.2.10
 beautifulsoup4==4.9.1
+decouple==0.0.7
 Django==3.1
 django-bootstrap4==2.2.0
 progressbar2==3.52.1
