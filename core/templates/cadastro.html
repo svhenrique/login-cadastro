@@ -1,59 +1,47 @@
-<html lange="pt-br">
-    <head>
-        <meta charset="utf-8">
-        <title>Cadastro</title>
-        <link rel="stylesheet" href="./css/style.css"
-    </head>
-    <body>
-        <div class="center">
-            <h1>Cadastro</h1>
+{% extends 'base.html'  %}
+{% block content %}
+<form action="post">
+    <div class="txt_field">
+        <input type="text" required>
+        <span></span>
+        <label>Nome</label>
+    </div>
 
-            <form action="post">
-                <div class="txt_field">
-                    <input type="text" required>
-                    <span></span>
-                    <label>Nome</label>
-                </div>            
-                
-                <div class="txt_field">
-                    <input type="email" required>
-                    <span></span>
-                    <label>Sobrenome</label>
-                </div>
-    
-                <div class="txt_field">
-                    <input type="email" required>
-                    <span></span>
-                    <label>E-mail</label>
-                </div>
-    
-                <div class="txt_field">
-                    <input type="password" required>
-                    <span></span>
-                    <label>Senha</label>
-                </div>
-    
-                <div class="txt_field">
-                    <input type="password" required>
-                    <span></span>
-                    <label>Confirmar senha</label>
-                </div>
-                
-                <div class="file_field">
-                    <input type="file" id="files">
-                    <label for="files">Inserir Foto de Perfil</label>
-                    <span></span> 
-                </div>
+    <div class="txt_field">
+        <input type="email" required>
+        <span></span>
+        <label>Sobrenome</label>
+    </div>
 
-                <div class="login_link">
-                    Já está cadastrado? <a href="./login.html">Entrar</a>
-                </div>
+    <div class="txt_field">
+        <input type="email" required>
+        <span></span>
+        <label>E-mail</label>
+    </div>
 
-                <input type="submit" value="Criar Conta">
+    <div class="txt_field">
+        <input type="password" required>
+        <span></span>
+        <label>Senha</label>
+    </div>
 
+    <div class="txt_field">
+        <input type="password" required>
+        <span></span>
+        <label>Confirmar senha</label>
+    </div>
 
-            </form>
+    <div class="file_field">
+        <input type="file" id="files">
+        <label for="files">Inserir Foto de Perfil</label>
+        <span></span>
+    </div>
 
-        </div>
-    </body> 
-</html>
+    <div class="login_link">
+        Já está cadastrado? <a href="./login.html">Entrar</a>
+    </div>
+
+    <input type="submit" value="Criar Conta">
+
+</form>
+{% endblock %}
