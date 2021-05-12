@@ -22,8 +22,7 @@ from django.conf import settings
 import django.contrib.auth.urls
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('conta/', include('django.contrib.auth.urls')),  # rotas de atuenticação do próprio django
     # ver se deve apagar as outras rotas que o django tem no auth.urls
     path('', include('core.urls')),  # incluindo página de cadastro
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
