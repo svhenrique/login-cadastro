@@ -18,14 +18,12 @@ from django.urls import path, include
 from django.views.generic.base import TemplateView
 from django.conf.urls.static import static
 from django.conf import settings
-from core.views import IndexView
 
 import django.contrib.auth.urls
 urlpatterns = [
-    path('', IndexView.as_view(), name='index'),
     path('admin/', admin.site.urls),
     path('conta/', include('django.contrib.auth.urls')),  # rotas de atuenticação do próprio django
     # ver se deve apagar as outras rotas que o django tem no auth.urls
-    path('conta/', include('core.urls')),  # incluindo página de cadastro
+    path('', include('core.urls')),  # incluindo página de cadastro
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
