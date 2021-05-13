@@ -1,16 +1,16 @@
 {% extends 'base.html'  %}
 {% block content %}
 <h1>Login</h1>
-<form action="post">
-
+<form action="{% url 'index' %}" method="post">
+    {% csrf_token %}
     <div class="txt_field">
-        <input type="email" required>
+        {{ form.username }}
         <span></span>
         <label>Email</label>
     </div>
 
     <div class="txt_field">
-        <input type="password" required>
+        {{ form.password }}
         <span></span>
         <label>Senha</label>
     </div>
