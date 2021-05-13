@@ -30,7 +30,7 @@ class CadastroView(FormView):
     def get(self, request, *args, **kwargs):
         if request.user.is_anonymous:
             return super(CadastroView, self).get(request, *args, **kwargs)
-        return redirect('logout')
+        return redirect('index')
 
     def form_valid(self, form, *args, **kwargs):
         # ver como desconectar usuário que estava conectado antes de cadastrar
