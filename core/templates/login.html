@@ -1,7 +1,7 @@
 {% extends 'base.html'  %}
 {% block content %}
 <h1>Login</h1>
-<form action="{% url 'index' %}" method="post">
+<form method="post">
     {% csrf_token %}
     <div class="txt_field">
         {{ form.username }}
