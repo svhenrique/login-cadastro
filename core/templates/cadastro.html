@@ -1,39 +1,40 @@
 {% extends 'base.html'  %}
 {% block content %}
 <h1>Cadastro</h1>
-<form action="post">
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
     <div class="txt_field">
-        <input type="text" required>
+        {{ form.first_name }}
         <span></span>
         <label>Nome</label>
     </div>
 
     <div class="txt_field">
-        <input type="email" required>
+        {{ form.last_name }}
         <span></span>
         <label>Sobrenome</label>
     </div>
 
     <div class="txt_field">
-        <input type="email" required>
+        {{ form.username }}
         <span></span>
         <label>E-mail</label>
     </div>
 
     <div class="txt_field">
-        <input type="password" required>
+        {{ form.password1 }}
         <span></span>
         <label>Senha</label>
     </div>
 
     <div class="txt_field">
-        <input type="password" required>
+        {{ form.password2 }}
         <span></span>
         <label>Confirmar senha</label>
     </div>
 
     <div class="file_field">
-        <input type="file" id="files">
+        {{ form.imagem }}
         <label for="files">Inserir Foto de Perfil</label>
         <span></span>
     </div>
