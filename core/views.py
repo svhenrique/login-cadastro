@@ -42,5 +42,8 @@ class CadastroView(FormView):
         return super(CadastroView, self).form_invalid(form)
 
 class LogarView(LoginView):
+
     template_name = 'login.html'
 
+    # nao e necessario por o success_url pois ja existe uma rota de redirecionamento
+    # chamada LOGOUT_REDIRECT_URL em settings.py
