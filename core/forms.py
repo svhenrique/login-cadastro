@@ -2,6 +2,8 @@ from django import forms
 
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm, AuthenticationForm
 
+from django.utils.translation import gettext, gettext_lazy as _
+
 from .models import CustomUsuario, UsuarioManager
 
 class CustomLoginForm(AuthenticationForm):
