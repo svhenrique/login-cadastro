@@ -1,6 +1,6 @@
 from django.shortcuts import redirect
 from django.urls import reverse_lazy
-from .forms import CustomUsuarioCreateForm
+from .forms import CustomUsuarioCreateForm, CustomLoginForm
 from django.views.generic import FormView, TemplateView
 from django.contrib.auth.views import LoginView
 
@@ -44,6 +44,7 @@ class CadastroView(FormView):
 class LogarView(LoginView):
 
     template_name = 'login.html'
+    form_class = CustomLoginForm
 
     # nao e necessario por o success_url pois ja existe uma rota de redirecionamento
     # chamada LOGIN_REDIRECT_URL em settings.py
