@@ -11,8 +11,11 @@ class CustomLoginForm(AuthenticationForm):
     password = forms.CharField(
         label=_("Password"),
         strip=False,
-        widget=forms.PasswordInput(attrs={'autocomplete': 'off'}),
+        widget=forms.PasswordInput(attrs={'autocomplete': 'current-password'}),
     )
+
+    password.widget.attrs.update({'autocomplete': 'off'})
+
 
 class CustomUsuarioCreateForm(UserCreationForm):
     """
