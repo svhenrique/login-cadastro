@@ -1,6 +1,6 @@
 from django import forms
 
-from django.contrib.auth.forms import UserCreationForm, UserChangeForm, AuthenticationForm
+from django.contrib.auth.forms import UserCreationForm, UserChangeForm, AuthenticationForm, UsernameField
 
 from django.utils.translation import gettext, gettext_lazy as _
 
@@ -14,6 +14,7 @@ class CustomLoginForm(AuthenticationForm):
         widget=forms.PasswordInput(attrs={'autocomplete': 'current-password'}),
     )
 
+    username = UsernameField(widget=forms.TextInput(attrs={'autofocus': True, 'type': 'email'}))
     password.widget.attrs.update({'autocomplete': 'off'})
 
 
