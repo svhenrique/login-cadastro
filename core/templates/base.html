@@ -8,6 +8,14 @@
 </head>
 <body>
     <div class="center">
+        {% if form.errors %}
+            {% for error, messages in form.errors.items %}
+                {% for message in messages %}
+                    {# Abrir mais um for para impedir que messagens saiam em ul #}
+                    <h4>{{ message }}</h4>
+                {% endfor %}
+            {% endfor %}
+        {% endif %}
         {% block content %}
         {% endblock %}
     </div>
