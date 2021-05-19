@@ -45,7 +45,7 @@ class UsuarioManager(BaseUserManager):
 class CustomUsuario(AbstractUser):
 
     email = models.EmailField('E-mail', unique=True)
-    imagem = models.FileField('Imagem', max_length=50, blank=True)
+    imagem = models.FileField('Imagem', upload_to=get_file_path, max_length=50, blank=True)
     first_name = models.CharField('Primeiro nome', max_length=150)
     last_name = models.CharField('Ultimo nome', max_length=150)
 
