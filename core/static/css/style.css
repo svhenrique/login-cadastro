@@ -41,6 +41,7 @@ body {
    margin-right: auto;
    height: 35vh;
    width: 35vh;
+   object-fit: cover;
    border-radius: 25%;
 }
 
