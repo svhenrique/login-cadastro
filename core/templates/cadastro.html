@@ -1,7 +1,7 @@
 {% extends 'base.html'  %}
 {% block content %}
 <h1>Cadastro</h1>
-<form method="post" enctype="multipart/form-data">
+<form method="post" enctype="multipart/form-data" autocomplete="off">
     {% csrf_token %}
     <div class="txt_field">
         {{ form.first_name }}
