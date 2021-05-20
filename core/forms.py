@@ -6,6 +6,8 @@ from django.utils.translation import gettext, gettext_lazy as _
 
 from .models import CustomUsuario, UsuarioManager
 
+from .validators import validate_file_size, validate_file_format
+
 class CustomLoginForm(AuthenticationForm):
 
     password = forms.CharField(
@@ -28,7 +30,7 @@ class CustomUsuarioCreateForm(UserCreationForm):
         Entretanto, superusers criados pelo comando creatsuperusers de manage.py sera staff e superuser,
         alem de poder acessar a pagina de login.
     """
-    imagem = forms.FileField(required=False)
+    imagem = forms.ImageField(required=False, validators=[validate_file_format, validate_file_size])
     username = forms.EmailField(required=True)
 
     class Meta:
