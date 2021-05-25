@@ -5,6 +5,9 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser
 from django.contrib.auth.models import BaseUserManager
 
+from django.dispatch import receiver
+import os
+
 def get_file_path(_instance, filename):
     ext = filename.split('.')[-1]
     filename = f'{uuid.uuid4()}.{ext}'
@@ -62,4 +65,11 @@ class CustomUsuario(AbstractUser):
             return "/static/img/blank-profile.png"
 
     objects = UsuarioManager()
+
+
+@receiver(models.signals.pre_delete, sender=CustomUsuario)
+def delete_image_pre_user_delete(instance, **kwargs):
+    if instance.imagem:
+        if os.path.isfile(instance.imagem.path):
+            os.remove(instance.imagem.path)
 
