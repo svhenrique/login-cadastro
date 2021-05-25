@@ -6,8 +6,6 @@ from .models import CustomUsuario
 
 @admin.register(CustomUsuario)
 class CustomUsuarioAdmin(UserAdmin):
-    add_form = CustomUsuarioCreateForm
-    form = CustomUsuarioChangeForm
     model = CustomUsuario
     list_display = ('email', 'first_name', 'last_name', 'is_staff', 'is_superuser')
     fieldsets = (
