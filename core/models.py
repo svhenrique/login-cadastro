@@ -66,12 +66,6 @@ class CustomUsuario(AbstractUser):
 
     objects = UsuarioManager()
 
-def in_db(instance):
-
-    if CustomUsuario.objects.get(id=instance.id):
-        return True
-    return False
-
 @receiver(models.signals.pre_delete, sender=CustomUsuario)
 def delete_image_pre_user_delete(instance, **kwargs):
     if instance.imagem:
