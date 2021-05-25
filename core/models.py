@@ -66,10 +66,37 @@ class CustomUsuario(AbstractUser):
 
     objects = UsuarioManager()
 
+def in_db(instance):
+
+    if CustomUsuario.objects.get(id=instance.id):
+        return True
+    return False
 
 @receiver(models.signals.pre_delete, sender=CustomUsuario)
 def delete_image_pre_user_delete(instance, **kwargs):
     if instance.imagem:
         if os.path.isfile(instance.imagem.path):
             os.remove(instance.imagem.path)
+
+@receiver(models.signals.pre_save, sender=CustomUsuario)
+def delete_image_pre_user_change(instance, **kwargs):
+    """
+        This functions analizes if an image of a user in database is equals
+        to the instance's image.
+
+        This is important because when login opereration is made, the pre_save
+        signal is called, therefore, needed this verification to not erase image
+        of user used in database.
+    """
+
+    if CustomUsuario.objects.filter(pk=instance.pk).exists():
+
+        user_in_db = CustomUsuario.objects.get(pk=instance.pk)
+
+        if user_in_db.imagem:
+            if user_in_db.imagem != instance.imagem:
+                if os.path.isfile(user_in_db.imagem.path):
+                    print('image deletada |'*50)
+                    os.remove(user_in_db.imagem.path)
+
 
