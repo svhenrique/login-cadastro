@@ -4,9 +4,12 @@ Django==3.1
 Pillow==8.2.0
 progressbar2==3.52.1
 python-decouple==3.4
+python-http-client==3.3.2
 python-utils==2.4.0
 pytz==2020.1
+sendgrid==6.7.0
 six==1.15.0
 soupsieve==2.0.1
 sqlparse==0.3.1
+starkbank-ecdsa==1.1.0
 whitenoise==5.2.0
