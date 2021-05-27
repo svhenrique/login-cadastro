@@ -6,10 +6,10 @@ from decouple import config
 
 class ApiClient:
 
-    client = sendgrid.SendGridAPIClient(api_key=config('SENDGRID_API'))
+    _client = sendgrid.SendGridAPIClient(api_key=config('SENDGRID_API'))
 
     def get_client(self):
-        return self.client
+        return self._client
 
 class MailMessage:
 
