@@ -51,4 +51,4 @@ class LogarView(LoginView):
 
 class SucessoView(TemplateView):
 
-    template_name = 'sucess.html'
+    template_name = 'sucesso.html'
