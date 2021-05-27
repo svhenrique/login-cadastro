@@ -19,7 +19,8 @@ class MailMessage:
     content = ""
 
     def __init__(self, from_email, to_email, subject, content):
-        print(content)
+        if len(content) != 2:
+            raise TypeError(f"__init__() content aceita apenas 2 parâmetros mas {len(content)} foram dados")
         self.from_email = Email(from_email)
         self.to_email = To(to_email)
         self.subject = subject
@@ -40,6 +41,6 @@ class Sender:
         try:
             client = self.client.get_client()
             response = client.send(self.mail.get_mail())
+            return response.status_code
         except Exception as e:
-            raise e
-
+            return e
