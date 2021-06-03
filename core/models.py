@@ -79,8 +79,8 @@ def delete_image_pre_user_change(instance, **kwargs):
         to the instance's image.
 
         This is important because when login opereration is made, the pre_save
-        signal is called, therefore, needed this verification to not erase image
-        of user used in database.
+        signal is called, therefore, this verification is required to not erase image
+        of user which is used in database.
     """
 
     if CustomUsuario.objects.filter(pk=instance.pk).exists():
