@@ -5,7 +5,7 @@
 Para clonar o repositório é possível baixa-lo completamente do github e extrair em uma pasta de projeto ou utilizar o comando:
 
 ```bash
-git clone https://github.com/svhenrique/projext-web-project.git
+https://github.com/svhenrique/login-cadastro.git
 ```
 
 Para utilizar o comando anterior é necessário ter o Git instalado no computador.
