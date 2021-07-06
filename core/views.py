@@ -48,3 +48,7 @@ class LogarView(LoginView):
 
     # nao e necessario por o success_url pois ja existe uma rota de redirecionamento
     # chamada LOGIN_REDIRECT_URL em settings.py
+
+class SucessoView(TemplateView):
+
+    template_name = 'sucesso.html'
