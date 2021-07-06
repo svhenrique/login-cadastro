@@ -1,8 +1,9 @@
 import sendgrid
-import os
 from sendgrid.helpers.mail import Mail, Email, To, Content
 
 from decouple import config
+
+EMAIL = config('EMAIL')
 
 class ApiClient:
 
@@ -11,36 +12,29 @@ class ApiClient:
     def get_client(self):
         return self._client
 
-class MailMessage:
+class EmailMessage:
 
-    from_email = ""  # Change to your verified sender
-    to_email = ""  # Change to your recipient
-    subject = ""
-    content = ""
+    client = ApiClient()
+    from_email = EMAIL  # email authenticated in sendgrid
+    to_email = None  # Recipient of the message
+    subject = None  # Subject of the message
+    content = None  # Tuple with MIME type and content
 
-    def __init__(self, from_email, to_email, subject, content):
+    def __init__(self, to_email, subject, content):
         if len(content) != 2:
             raise TypeError(f"__init__() content aceita apenas 2 parâmetros mas {len(content)} foram dados")
-        self.from_email = Email(from_email)
         self.to_email = To(to_email)
         self.subject = subject
         self.content = Content(*content)
 
-    def get_mail(self):
+    def _get_mail(self):
         return Mail(self.from_email, self.to_email, self.subject, self.content)
 
-class Sender:
-
-    client = ApiClient()
-    mail = None
-
-    def __init__(self, email):
-        self.mail = MailMessage(*email)
-
-    def send(self):
+    def send_email(self):
         try:
             client = self.client.get_client()
-            response = client.send(self.mail.get_mail())
+            message = self._get_mail()
+            response = client.send(message)
             return response.status_code
         except Exception as e:
             return e
