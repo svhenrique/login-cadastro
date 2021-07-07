@@ -3,7 +3,7 @@ from django.contrib.auth.forms import UserCreationForm, UserChangeForm, Authenti
 from django.utils.translation import gettext, gettext_lazy as _
 from .models import CustomUsuario, UsuarioManager
 from .validators import validate_file_size, validate_file_format
-from . import email_sender
+from .email_sender import EmailMessage
 from django.template import loader
 
 class CustomLoginForm(AuthenticationForm):
@@ -54,7 +54,15 @@ class CustomUsuarioChangeForm(UserChangeForm):
         model = CustomUsuario
         fields = ('first_name', 'last_name', 'imagem')
 
+class CustomPasswordResetForm(PasswordResetForm):
 
+    def send_mail(self, subject_template_name, email_template_name,
+                  context, from_email, to_email, html_email_template_name=None):
+        subject = loader.render_to_string(subject_template_name, context)
+        # Email subject *must not* contain newlines
+        subject = ''.join(subject.splitlines())
+        body = loader.render_to_string(email_template_name, context)
 
-
+        mail = EmailMessage(to_email, subject, ('text/html', body))
+        mail.send_email()
 
