@@ -98,13 +98,13 @@ copie o valor retornado e cole na SECRET_KEY do .env.
 
 e procure a opção Sign In, preencha os dados e cadastre-se.
 
-2 - Após se cadastrar, é necessaŕio criar um sender, para isso, acesse
+2 - Após se cadastrar, é necessário criar um sender, para isso, acesse
 
 https://docs.sendgrid.com/ui/sending-email/senders
 
 e siga os passos comentados.
 
-3 - Depois de seguir os passos 1 e 2, é necessário criar uma API Key do SendGrid, na tela inicial do SendGrid, vá em Settings e abra a página API Keys. Nela, clique em Create API Key e marque Restricted Acess, após isso, procure e ative a opção Mail Send, clique em Create e View para finalizar a criação da API.
+3 - Depois de seguir os passos 1 e 2, é preciso criar uma API Key do SendGrid, na tela inicial do SendGrid, vá em Settings e abra a página API Keys. Nela, clique em Create API Key e marque Restricted Acess, após isso, procure e ative a opção Mail Send, clique em Create e View para finalizar a criação da API.
 
 Se todos os passos foram feitos corretamente uma API aparecerá na tela, copie e cole ao lado direito de SENDGRID_API. 
 
