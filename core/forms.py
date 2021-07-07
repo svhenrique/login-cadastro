@@ -1,12 +1,10 @@
 from django import forms
-
-from django.contrib.auth.forms import UserCreationForm, UserChangeForm, AuthenticationForm, UsernameField
-
+from django.contrib.auth.forms import UserCreationForm, UserChangeForm, AuthenticationForm, UsernameField, PasswordResetForm
 from django.utils.translation import gettext, gettext_lazy as _
-
 from .models import CustomUsuario, UsuarioManager
-
 from .validators import validate_file_size, validate_file_format
+from . import email_sender
+from django.template import loader
 
 class CustomLoginForm(AuthenticationForm):
 
@@ -55,3 +53,8 @@ class CustomUsuarioChangeForm(UserChangeForm):
     class Meta:
         model = CustomUsuario
         fields = ('first_name', 'last_name', 'imagem')
+
+
+
+
+
