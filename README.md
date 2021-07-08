@@ -115,7 +115,7 @@ Vídeo mostrando o que se deve fazer no passo 3:
 
 Se você já fez a parte do SENDGRID_API, basta usar o sender criado, colando ao lado direito de EMAIL. 
 
-Como criaar um sender:
+Como criar um sender:
 - https://docs.sendgrid.com/ui/sending-email/senders
 
 
