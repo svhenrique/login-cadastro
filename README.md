@@ -1,9 +1,7 @@
 # Imagens do projeto
 
 ![Image 2](images-project/2.png)
-Format: ![Alt Text](url)
 ![Image 1](images-project/1.png)
-Format: ![Alt Text](url)
 
 
 ## Configuração do ambiente 
