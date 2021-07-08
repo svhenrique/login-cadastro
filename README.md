@@ -127,7 +127,7 @@ Após a configuração do ambiente, para fazer as migrações é preciso executa
 python manage.py makemigrations
 python manage.py migrate 
 ```
-Com as migrações feitas no banco de dados, é possível iniciar o servidor com o comando:
+Com as migrações feitas no banco de dados, é possível iniciar o servidor com o comando
 
 ```bash
 python manage.py runserver
