@@ -5,6 +5,7 @@
 A aplicação pode ser definida como um sistema de gerenciamento de usuários. Esse sistema possui as operações:
 - Cadastro
 - Login
+- Logout
 - Mudar senha
 
  O sistema usa um sender do SendGrid para controlar o cadastro e mudança de senha dos usuários (permitindo apenas emails válidos).
