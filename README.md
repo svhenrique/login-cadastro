@@ -1,4 +1,14 @@
-# Imagens do projeto
+## Sobre o projeto
+
+### Aplicação para gerenciamento de usuários
+
+A aplicação pode ser definida como um sistema de gerenciamento de usuários. Esse sistema possui as operações:
+- Cadastro
+- Login
+- Mudar senha
+e usa um sender do SendGrid para controlar o cadastro e mudança de senha dos usuários (permitindo apenas emails válidos).
+
+## Imagens do projeto
 
 ![Image 2](images-project/2.png)
 ![Image 1](images-project/1.png)
