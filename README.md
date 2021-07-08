@@ -6,7 +6,8 @@ A aplicação pode ser definida como um sistema de gerenciamento de usuários. E
 - Cadastro
 - Login
 - Mudar senha
-e usa um sender do SendGrid para controlar o cadastro e mudança de senha dos usuários (permitindo apenas emails válidos).
+
+ O sistema usa um sender do SendGrid para controlar o cadastro e mudança de senha dos usuários (permitindo apenas emails válidos).
 
 ## Imagens do projeto
 
