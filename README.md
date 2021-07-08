@@ -119,6 +119,18 @@ Como criar um sender:
 - https://docs.sendgrid.com/ui/sending-email/senders
 
 
+## Executando o projeto
 
+Após a configuração do ambiente, para fazer as migrações é preciso executar os comandos
+
+```bash
+python manage.py makemigrations
+python manage.py migrate 
+```
+Com as migrações feitas no banco de dados, é possível iniciar o servidor com o comando:
+
+```bash
+python manage.py runserver
+```
 
 
