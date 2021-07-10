@@ -63,6 +63,6 @@ class CustomPasswordResetForm(PasswordResetForm):
         subject = ''.join(subject.splitlines())
         body = loader.render_to_string(email_template_name, context)
 
-        mail = EmailMessage(to_email, subject, ('text/html', body))
+        mail = EmailMessage(to_email, subject, ('text/plain', body))
         mail.send_email()
 
