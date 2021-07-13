@@ -1,0 +1,49 @@
+{% extends 'base.html'  %}
+{% block content %}
+<h1>Cadastro</h1>
+<form method="post" enctype="multipart/form-data" autocomplete="off">
+    {% csrf_token %}
+    <div class="txt_field">
+        {{ form.first_name }}
+        <span></span>
+        <label>Nome</label>
+    </div>
+
+    <div class="txt_field">
+        {{ form.last_name }}
+        <span></span>
+        <label>Sobrenome</label>
+    </div>
+
+    <div class="txt_field">
+        {{ form.username }}
+        <span></span>
+        <label>E-mail</label>
+    </div>
+
+    <div class="txt_field">
+        {{ form.password1 }}
+        <span></span>
+        <label>Senha</label>
+    </div>
+
+    <div class="txt_field">
+        {{ form.password2 }}
+        <span></span>
+        <label>Confirmar senha</label>
+    </div>
+
+    <div class="file_field">
+        {{ form.imagem }}
+        <label for="files">Inserir Foto de Perfil</label>
+        <span></span>
+    </div>
+
+    <div class="login_link">
+        Já está cadastrado? <a href="{% url 'login' %}">Entrar</a>
+    </div>
+
+    <input type="submit" value="Criar Conta">
+
+</form>
+{% endblock %}
