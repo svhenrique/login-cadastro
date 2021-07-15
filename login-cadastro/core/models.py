@@ -87,7 +87,7 @@ def delete_image_pre_user_change(instance, **kwargs):
 
         user_in_db = CustomUsuario.objects.get(pk=instance.pk)
 
-        if user_in_db.imagm:
+        if user_in_db.image:
             if user_in_db.image != instance.image:
                 if os.path.isfile(user_in_db.image.path):
                     print('image deletada |'*50)
