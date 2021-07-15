@@ -4,7 +4,7 @@ from django.test import TestCase
 from model_mommy import mommy
 from core.models import get_file_path
 
-from core.models import UsuarioManager, CustomUsuario
+from core.models import CustomUsuario
 
 class GetFilePathTestCase(TestCase):
 
