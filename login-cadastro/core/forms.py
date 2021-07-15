@@ -45,7 +45,7 @@ class CustomUsuarioCreateForm(UserCreationForm):
             first_name=self.cleaned_data['first_name'],
             last_name=self.cleaned_data['last_name']
         )
-
+        return user
 class CustomUsuarioChangeForm(UserChangeForm):
     """
     Formulario para modificar usuarios
