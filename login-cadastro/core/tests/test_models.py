@@ -10,8 +10,8 @@ class GetFilePathTestCase(TestCase):
         self.filename = f'{uuid.uuid4()}.png'
 
     def test_get_file_path(self):
-        arquivo = get_file_path(None, 'teste.png')
-        self.assertTrue(len(arquivo), len(self.filename))
+        file = get_file_path(None, 'teste.png')
+        self.assertTrue(len(file), len(self.filename))
 
 class CustomUsuarioTestCase(TestCase):
 
@@ -23,3 +23,5 @@ class CustomUsuarioTestCase(TestCase):
 
     def test_image_url(self):
         self.assertEquals("/static/img/blank-profile.png", self.usuario.get_imagem())
+
+
