@@ -16,12 +16,10 @@ class GetFilePathTestCase(TestCase):
 class CustomUsuarioTestCase(TestCase):
 
     def setUp(self):
-        self.usuario = mommy.make('CustomUsuario')
+        self.user = mommy.make('CustomUsuario')
 
     def test_str(self):
-        self.assertEquals(str(self.usuario), self.usuario.email)
+        self.assertEquals(str(self.user), self.user.email)
 
     def test_image_url(self):
-        self.assertEquals("/static/img/blank-profile.png", self.usuario.get_imagem())
-
-
+        self.assertEquals("/static/img/blank-profile.png", self.user.get_imagem())
