@@ -28,12 +28,12 @@ class CustomUsuarioCreateForm(UserCreationForm):
         Entretanto, superusers criados pelo comando creatsuperusers de manage.py sera staff e superuser,
         alem de poder acessar a pagina de login.
     """
-    imagem = forms.ImageField(required=False, validators=[validate_file_format, validate_file_size])
+    image = forms.ImageField(required=False, validators=[validate_file_format, validate_file_size])
     username = forms.EmailField(required=True)
 
     class Meta:
         model = CustomUsuario
-        fields = ('username', 'first_name', 'last_name', 'imagem')
+        fields = ('username', 'first_name', 'last_name', 'image')
         labels = {'username': 'E-mail'}
 
     def save(self, commit=True):
@@ -41,7 +41,7 @@ class CustomUsuarioCreateForm(UserCreationForm):
         user = CustomUsuario.objects.create_user(
             self.cleaned_data['username'],
             self.cleaned_data['password1'],
-            imagem=self.cleaned_data['imagem'],
+            image=self.cleaned_data['image'],
             first_name=self.cleaned_data['first_name'],
             last_name=self.cleaned_data['last_name']
         )
@@ -52,7 +52,7 @@ class CustomUsuarioChangeForm(UserChangeForm):
     """
     class Meta:
         model = CustomUsuario
-        fields = ('first_name', 'last_name', 'imagem')
+        fields = ('first_name', 'last_name', 'image')
 
 class CustomPasswordResetForm(PasswordResetForm):
 
