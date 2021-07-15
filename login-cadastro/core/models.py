@@ -48,7 +48,7 @@ class UsuarioManager(BaseUserManager):
 class CustomUsuario(AbstractUser):
 
     email = models.EmailField('E-mail', unique=True)
-    imagem = models.ImageField('Imagem', upload_to=get_file_path, max_length=50, blank=True)
+    image = models.ImageField('Imagem', upload_to=get_file_path, max_length=50, blank=True)
     first_name = models.CharField('Primeiro nome', max_length=150)
     last_name = models.CharField('Ultimo nome', max_length=150)
 
@@ -58,9 +58,9 @@ class CustomUsuario(AbstractUser):
     def __str__(self):
         return self.email
 
-    def get_imagem(self):
-        if self.imagem:
-            return self.imagem.url
+    def get_image(self):
+        if self.image:
+            return self.image.url
         else:
             return "/static/img/blank-profile.png"
 
@@ -68,9 +68,9 @@ class CustomUsuario(AbstractUser):
 
 @receiver(models.signals.pre_delete, sender=CustomUsuario)
 def delete_image_pre_user_delete(instance, **kwargs):
-    if instance.imagem:
-        if os.path.isfile(instance.imagem.path):
-            os.remove(instance.imagem.path)
+    if instance.image:
+        if os.path.isfile(instance.image.path):
+            os.remove(instance.image.path)
 
 @receiver(models.signals.pre_save, sender=CustomUsuario)
 def delete_image_pre_user_change(instance, **kwargs):
@@ -87,10 +87,10 @@ def delete_image_pre_user_change(instance, **kwargs):
 
         user_in_db = CustomUsuario.objects.get(pk=instance.pk)
 
-        if user_in_db.imagem:
-            if user_in_db.imagem != instance.imagem:
-                if os.path.isfile(user_in_db.imagem.path):
+        if user_in_db.imagm:
+            if user_in_db.image != instance.image:
+                if os.path.isfile(user_in_db.image.path):
                     print('image deletada |'*50)
-                    os.remove(user_in_db.imagem.path)
+                    os.remove(user_in_db.image.path)
 
 
