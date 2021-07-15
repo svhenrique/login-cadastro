@@ -4,6 +4,8 @@ from django.test import TestCase
 from model_mommy import mommy
 from core.models import get_file_path
 
+from core.models import UsuarioManager, CustomUsuario
+
 class GetFilePathTestCase(TestCase):
 
     def setUp(self):
@@ -22,4 +24,5 @@ class CustomUsuarioTestCase(TestCase):
         self.assertEquals(str(self.user), self.user.email)
 
     def test_image_url(self):
-        self.assertEquals("/static/img/blank-profile.png", self.user.get_imagem())
+        self.assertEquals("/static/img/blank-profile.png", self.user.get_image())
+
