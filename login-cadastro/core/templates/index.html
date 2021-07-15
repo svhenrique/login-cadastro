@@ -3,7 +3,7 @@
 	<div class="txt_field">
 		<h1>Seja Bem-vindo(a)</h1>
 		<h2>{{ user.get_full_name }}</h2>
-		<img src="{{ user.get_imagem }}" alt=".">
+		<img src="{{ user.get_image }}" alt=".">
 	</div>
     <div class="login_link">
         Deseja sair? <a href="{% url 'logout' %}">Logout</a>
