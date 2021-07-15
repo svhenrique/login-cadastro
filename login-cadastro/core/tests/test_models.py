@@ -19,12 +19,16 @@ class CustomUsuarioTestCase(TestCase):
 
     def setUp(self):
         self.user = mommy.make('CustomUsuario')
+        self.user_with_image = mommy.make('CustomUsuario', image='teste.png')
 
     def test_str(self):
         self.assertEquals(str(self.user), self.user.email)
 
-    def test_image_url(self):
+    def test_default_image_url(self):
         self.assertEquals("/static/img/blank-profile.png", self.user.get_image())
+
+    def test_image_profile(self):
+        self.assertEquals(self.user_with_image.image.url, self.user_with_image.get_image())
 
 class UsuarioManagerTestCase(TestCase):
 
