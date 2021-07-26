@@ -39,3 +39,6 @@ class CustomPasswordResetFormTestCase(TestCase):
         response = self.form.send_mail(data=self.data)
         self.assertEquals(response, 202)
 
+    def test_form_valid(self):
+        form = self.form
+        self.assertEquals(form.is_valid(), True)
