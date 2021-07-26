@@ -34,3 +34,8 @@ class CustomPasswordResetFormTestCase(TestCase):
             'body': self.message
         }
         self.form = CustomPasswordResetForm(data={"email": self.email})
+
+    def test_send_mail_status_code(self):
+        response = self.form.send_mail(data=self.data)
+        self.assertEquals(response, 202)
+
