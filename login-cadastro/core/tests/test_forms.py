@@ -20,4 +20,17 @@ class CustomPasswordResetForm(CustomPasswordResetForm):
         response = 202
         return response
 
+class CustomPasswordResetFormTestCase(TestCase):
 
+    def setUp(self):
+        self.name = 'Felicity Jones'
+        self.email = 'felicity@gmail.com'
+        self.subject = 'Um assunto qualquer'
+        self.message = 'Uma mensagem qualquer'
+        self.data = {
+            'name': self.name,
+            'to_email': self.email,
+            'subject': self.subject,
+            'body': self.message
+        }
+        self.form = CustomPasswordResetForm(data={"email": self.email})
