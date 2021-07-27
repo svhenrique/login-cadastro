@@ -61,6 +61,11 @@ class CustomUsuarioCreateFormTestCase(TestCase):
         }
         self.create_form = CustomUsuarioCreateForm(data=self.data)
 
+    def test_form_valid(self):
+        form = self.create_form
+        valid = form.is_valid()
+        self.assertTrue(valid)
+
 
 
 
