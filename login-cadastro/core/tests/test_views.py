@@ -21,7 +21,7 @@ class IndexViewTestCase(TestCase):
         redirects = len(request.redirect_chain)
         self.assertEquals(redirects, 1)
 
-    def test_post_function(self):
+    def test_get_function_when_login(self):
         self.user_creation_form.is_valid()
         self.user_creation_form.save()
         data = {
