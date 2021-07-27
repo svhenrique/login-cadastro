@@ -16,3 +16,9 @@ class IndexViewTestCase(TestCase):
         self.user_creation_form = CustomUsuarioCreateForm(data=self.data)
         self.client = Client()
 
+    def test_get_function(self):
+        request = self.client.get(reverse_lazy('index'), follow=True)
+        redirects = len(request.redirect_chain)
+        self.assertEquals(redirects, 1)
+
+
