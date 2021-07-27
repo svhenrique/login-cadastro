@@ -7,7 +7,9 @@ from django.template import loader
 
 class CustomPasswordResetForm(CustomPasswordResetForm):
     """
-       Classe reescrita
+        Método reescrito para:
+            - Evitar envios de emails de reset desnecessários.
+            - Testar sem precisar recriar passos de formulários django.
     """
     def send_mail(self, data=None):
         # subject = loader.render_to_string(subject_template_name, context)
