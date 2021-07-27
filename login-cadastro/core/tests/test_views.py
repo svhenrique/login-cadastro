@@ -21,4 +21,14 @@ class IndexViewTestCase(TestCase):
         redirects = len(request.redirect_chain)
         self.assertEquals(redirects, 1)
 
-
+    def test_post_function(self):
+        self.user_creation_form.is_valid()
+        self.user_creation_form.save()
+        data = {
+            'username': self.data['username'],
+            'password': self.data['password1']
+        }
+        client = self.client.login(username=data['username'], password=data['password'])
+        request = self.client.get(reverse_lazy('index'), follow=True)
+        redirects = len(request.redirect_chain)
+        self.assertEquals(redirects, 0)
