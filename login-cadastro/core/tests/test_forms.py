@@ -66,6 +66,10 @@ class CustomUsuarioCreateFormTestCase(TestCase):
         valid = form.is_valid()
         self.assertTrue(valid)
 
-
+    def test_form_creation(self):
+        form = self.create_form
+        form.is_valid()
+        user = form.save()
+        self.assertIsNotNone(user.id)
 
 
