@@ -47,6 +47,19 @@ class CadastroViewTestCase(TestCase):
         self.user_creation_form = CustomUsuarioCreateForm(data=self.data)
         self.client = Client()
 
+    def test_get_anonymous(self):
+        request = self.client.get(reverse_lazy('cadastro'), follow=True)
+        redirects = len(request.redirect_chain)
+        self.assertEquals(redirects, 0)
+
+    def test_get_logged(self):
+        self.user_creation_form.is_valid()
+        self.user_creation_form.save()
+        client = self.client.login(username=self.data['username'], password=self.data['password1'])
+        client = self.client.get(reverse_lazy('cadastro'), follow=True)
+        redirects = len(client.redirect_chain)
+        self.assertEquals(redirects, 1)
+
     def test_user_creation(self):
         response = self.client.post(reverse_lazy('cadastro'), self.data)
         users = CustomUsuario.objects.all()
