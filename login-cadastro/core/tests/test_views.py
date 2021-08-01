@@ -51,3 +51,10 @@ class CadastroViewTestCase(TestCase):
         response = self.client.post(reverse_lazy('cadastro'), self.data)
         users = CustomUsuario.objects.all()
         self.assertEquals(len(users), 1)
+
+    def test_equal_user_creation(self):
+        self.user_creation_form.is_valid()
+        self.user_creation_form.save()
+        response = self.client.post(reverse_lazy('cadastro'), self.data)
+        users = CustomUsuario.objects.all()
+        self.assertEquals(len(users), 1)
