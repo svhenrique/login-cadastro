@@ -10,17 +10,18 @@ EMAIL_TEST = config('EMAIL_TEST')
 class CustomPasswordResetFormTestCase(TestCase):
 
     def setUp(self):
-        self.name = 'Felicity Jones'
-        self.email = 'felicity@gmail.com'
-        self.subject = 'Um assunto qualquer'
-        self.message = 'Uma mensagem qualquer'
+        self.first_name = 'Felicity',
+        self.last_name = 'Jones',
+        self.username = EMAIL_TEST
+        self.password = "cc_kk_ll_nn2"
         self.data = {
-            'name': self.name,
-            'to_email': self.email,
-            'subject': self.subject,
-            'body': self.message
+            "first_name": self.first_name,
+            "last_name": self.last_name,
+            "username": self.username,
+            "password1": self.password,
+            "password2": self.password
         }
-        self.form = CustomPasswordResetForm(data={"email": self.email})
+        self.form = CustomPasswordResetForm(data={"email": self.username})
 
     def test_send_mail_status_code(self):
         response = self.form.send_mail(data=self.data)
