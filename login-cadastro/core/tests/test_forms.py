@@ -4,24 +4,6 @@ from core.forms import CustomPasswordResetForm, CustomUsuarioCreateForm
 from core.email_sender import EmailMessage
 from django.template import loader
 
-
-class CustomPasswordResetFormForTest(CustomPasswordResetForm):
-    """
-        Método reescrito para:
-            - Evitar envios de emails de reset desnecessários.
-            - Testar sem precisar recriar passos de formulários django.
-    """
-    def send_mail(self, data=None):
-        # subject = loader.render_to_string(subject_template_name, context)
-        # Email subject *must not* contain newlines
-        # subject = ''.join(subject.splitlines())
-        # body = loader.render_to_string(email_template_name, context)
-
-        mail = EmailMessage(data['to_email'], data['subject'], ('text/plain', data['body']))
-        # response = mail.send_email()
-        response = 202
-        return response
-
 class CustomPasswordResetFormTestCase(TestCase):
 
     def setUp(self):
@@ -35,7 +17,7 @@ class CustomPasswordResetFormTestCase(TestCase):
             'subject': self.subject,
             'body': self.message
         }
-        self.form = CustomPasswordResetFormForTest(data={"email": self.email})
+        self.form = CustomPasswordResetForm(data={"email": self.email})
 
     def test_send_mail_status_code(self):
         response = self.form.send_mail(data=self.data)
