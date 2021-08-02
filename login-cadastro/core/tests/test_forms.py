@@ -3,6 +3,9 @@ from model_mommy import mommy
 from core.forms import CustomPasswordResetForm, CustomUsuarioCreateForm
 from core.email_sender import EmailMessage
 from django.template import loader
+from decouple import config
+
+EMAIL_TEST = config('EMAIL_TEST')
 
 class CustomPasswordResetFormTestCase(TestCase):
 
