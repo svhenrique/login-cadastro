@@ -5,7 +5,7 @@ from core.email_sender import EmailMessage
 from django.template import loader
 
 
-class CustomPasswordResetForm(CustomPasswordResetForm):
+class CustomPasswordResetFormForTest(CustomPasswordResetForm):
     """
         Método reescrito para:
             - Evitar envios de emails de reset desnecessários.
@@ -35,7 +35,7 @@ class CustomPasswordResetFormTestCase(TestCase):
             'subject': self.subject,
             'body': self.message
         }
-        self.form = CustomPasswordResetForm(data={"email": self.email})
+        self.form = CustomPasswordResetFormForTest(data={"email": self.email})
 
     def test_send_mail_status_code(self):
         response = self.form.send_mail(data=self.data)
