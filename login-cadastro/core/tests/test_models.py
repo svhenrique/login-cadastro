@@ -122,3 +122,9 @@ class ValidatorsTestCase(TestCase):
         user_in_db = CustomUsuario.objects.get(id=user.id)
         self.assertNotEquals(user_in_db.image, user.image)
 
+    def test_delete_image_pre_user_delete(self):
+        user = self.user
+        user.save()
+        image_path = user.image.path
+        delete_image_pre_user_delete(user)
+        self.assertEquals(os.path.isfile(image_path), False)
