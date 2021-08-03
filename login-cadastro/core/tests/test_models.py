@@ -73,3 +73,29 @@ class UsuarioManagerTestCase(TestCase):
         user = CustomUsuario.objects.create_superuser(username, password, first_name=first_name, image=image, last_name=last_name)
         self.assertEquals(int, type(user.id))
 
+    def test_create_super_user_is_staff_false(self):
+        username = self.data['username']
+        password = self.data['password']
+        first_name = self.data['first_name']
+        last_name = self.data['last_name']
+        password = self.data['password']
+        image = self.data['image']
+
+        with self.assertRaises(ValueError):
+            user = CustomUsuario.objects.create_superuser(username, password, first_name=first_name, image=image,
+                                                          last_name=last_name, is_staff=False)
+
+    def test_create_super_user_is_superuser_false(self):
+        username = self.data['username']
+        password = self.data['password']
+        first_name = self.data['first_name']
+        last_name = self.data['last_name']
+        password = self.data['password']
+        image = self.data['image']
+
+        with self.assertRaises(ValueError):
+            user = CustomUsuario.objects.create_superuser(username, password, first_name=first_name, image=image,
+                                                          last_name=last_name, is_superuser=False)
+
+
+
