@@ -114,3 +114,11 @@ class ValidatorsTestCase(TestCase):
                                             content_type='image/png')
         self.user = mommy.make('CustomUsuario', image=self.image1)
 
+    def test_delete_image_pre_user_change(self):
+        user = self.user
+        user.save()
+        user.image = self.image2
+        delete_image_pre_user_change(user)
+        user_in_db = CustomUsuario.objects.get(id=user.id)
+        self.assertNotEquals(user_in_db.image, user.image)
+
