@@ -82,3 +82,8 @@ class PasswordResetViewTestCase(TestCase):
         self.user = mommy.make('CustomUsuario', username=EMAIL_TEST, email=EMAIL_TEST)
         self.client = Client()
 
+    def test_email_password_reset(self):
+        self.user.save()
+        client = self.client.post(reverse_lazy('password_reset'), data={'email': EMAIL_TEST})
+        response = client.status_code
+        self.assertEquals(response, 302)
