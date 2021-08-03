@@ -1,10 +1,11 @@
 import uuid
+import os
+
 from django.test import TestCase
-
 from model_mommy import mommy
-from core.models import get_file_path
-
+from core.models import get_file_path, delete_image_pre_user_change, delete_image_pre_user_delete
 from core.models import CustomUsuario
+from django.core.files.uploadedfile import SimpleUploadedFile
 
 class GetFilePathTestCase(TestCase):
 
@@ -102,4 +103,14 @@ class UsuarioManagerTestCase(TestCase):
         with self.assertRaises(ValueError):
             user = CustomUsuario.objects._create_user(username, 'test')
 
+class ValidatorsTestCase(TestCase):
+
+    def setUp(self):
+        self.image_path1 = os.getcwd() + "/core/tests/images/i1.png"
+        self.image_path2 = os.getcwd() + "/core/tests/images/i2.png"
+        self.image1 = SimpleUploadedFile(name='i1.png', content=open(self.image_path1, 'rb').read(),
+                                            content_type='image/png')
+        self.image2 = SimpleUploadedFile(name='i1.png', content=open(self.image_path2, 'rb').read(),
+                                            content_type='image/png')
+        self.user = mommy.make('CustomUsuario', image=self.image1)
 
