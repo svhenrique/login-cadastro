@@ -3,6 +3,10 @@ from django.test import Client
 from django.urls import reverse_lazy
 from core.forms import CustomUsuarioCreateForm
 from core.models import CustomUsuario
+from decouple import config
+from model_mommy import mommy
+
+EMAIL_TEST = config('EMAIL_TEST')
 
 class IndexViewTestCase(TestCase):
 
@@ -71,3 +75,10 @@ class CadastroViewTestCase(TestCase):
         response = self.client.post(reverse_lazy('cadastro'), self.data)
         users = CustomUsuario.objects.all()
         self.assertEquals(len(users), 1)
+
+class PasswordResetViewTestCase(TestCase):
+
+    def setUp(self):
+        self.user = mommy.make('CustomUsuario', username=EMAIL_TEST, email=EMAIL_TEST)
+        self.client = Client()
+
