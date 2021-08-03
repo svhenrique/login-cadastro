@@ -96,6 +96,10 @@ class UsuarioManagerTestCase(TestCase):
         with self.assertRaises(ValueError):
             user = CustomUsuario.objects.create_superuser(username, password, first_name=first_name, image=image,
                                                           last_name=last_name, is_superuser=False)
+    def test_create_user_without_email(self):
+        username = False
 
+        with self.assertRaises(ValueError):
+            user = CustomUsuario.objects._create_user(username, 'test')
 
 
