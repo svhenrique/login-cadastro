@@ -17,9 +17,7 @@ class EmailSenderTestCase(TestCase):
 
     def test_email_send_exception(self):
         mail = EmailMessage(self.data['username'], 'teste', ('text/plain', 'test'))
-        print(mail.client)
         mail.client = 'teste'
-        print(mail.client)
         response = mail.send_email()
         self.assertNotEquals(response, 200)
 
