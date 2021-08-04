@@ -36,3 +36,7 @@ class ValidatorsTestCase(TestCase):
             archives.append(validate_file_size(image))
         self.assertEquals(len(archives), len(self.allowed_images))
 
+    def test_exception_validate_file_size(self):
+        with self.assertRaises(ValidationError):
+            archives = []
+            archives.append(validate_file_size(self.big_image))
