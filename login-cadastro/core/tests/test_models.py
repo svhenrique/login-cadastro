@@ -103,7 +103,7 @@ class UsuarioManagerTestCase(TestCase):
         with self.assertRaises(ValueError):
             user = CustomUsuario.objects._create_user(username, 'test')
 
-class ValidatorsTestCase(TestCase):
+class SignalsTestCase(TestCase):
 
     def setUp(self):
         self.image_path1 = os.getcwd() + "/core/tests/images/i1.png"
