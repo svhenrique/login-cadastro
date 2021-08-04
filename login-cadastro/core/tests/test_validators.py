@@ -18,3 +18,8 @@ class ValidatorsTestCase(TestCase):
         self.not_allowed_images = [File('test.zip', 20), File('test.raw', 10), File('test.bmp', 12)]
         self.big_image = File('test.png', 100000000000000)
 
+    def test_validate_file_format(self):
+        archives = []
+        for image in self.allowed_images:
+            archives.append(validate_file_format(image))
+        self.assertEquals(len(archives), len(self.allowed_images))
