@@ -23,5 +23,8 @@ class EmailSenderTestCase(TestCase):
         response = mail.send_email()
         self.assertNotEquals(response, 200)
 
+    def test_content_exception(self):
+        with self.assertRaises(TypeError):
+            mail = EmailMessage(self.data['username'], 'teste', ('test',))
 
 
