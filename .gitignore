@@ -3,3 +3,5 @@
 __pycache__
 venv
 login-cadastro/db.sqlite3
+.coveragerc
+htmlcov/*
