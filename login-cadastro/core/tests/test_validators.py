@@ -30,3 +30,9 @@ class ValidatorsTestCase(TestCase):
             for image in self.not_allowed_images:
                 archives.append(validate_file_format(image))
 
+    def test_validate_file_size(self):
+        archives = []
+        for image in self.allowed_images:
+            archives.append(validate_file_size(image))
+        self.assertEquals(len(archives), len(self.allowed_images))
+
