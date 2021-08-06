@@ -3,6 +3,12 @@ from django.urls import reverse_lazy
 from .forms import CustomUsuarioCreateForm, CustomLoginForm
 from django.views.generic import FormView, TemplateView
 from django.contrib.auth.views import LoginView
+from django.contrib.sites.shortcuts import get_current_site
+from django.template.loader import render_to_string
+from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
+from django.utils.encoding import force_bytes, force_text
+from .tokens import account_activation_token
+from .email_sender import EmailMessage
 
 """
 Criar class based view para página de registro e deixar página vinculada ao admin
@@ -26,6 +32,12 @@ class CadastroView(FormView):
     template_name = 'cadastro.html'
     form_class = CustomUsuarioCreateForm
     success_url = reverse_lazy('index')
+
+    def _user_form(self, form, *args, **kwargs):
+        user = form.save(commit=False)
+        user.is_active = False
+        user.save()
+        return user
 
     def get(self, request, *args, **kwargs):
         if request.user.is_anonymous:
