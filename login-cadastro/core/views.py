@@ -52,6 +52,12 @@ class CadastroView(FormView):
         to_email = user.email
         return to_email, mail_subject, message
 
+    def _send_confirmation(self, to_email, mail_subject, message):
+        email = EmailMessage(
+            to_email, mail_subject,  ('text/plain', message)
+        )
+        email.send_email()
+
     def get(self, request, *args, **kwargs):
         if request.user.is_anonymous:
             return super(CadastroView, self).get(request, *args, **kwargs)
