@@ -66,7 +66,9 @@ class CadastroView(FormView):
     def form_valid(self, form, *args, **kwargs):
         # ver como desconectar usuário que estava conectado antes de cadastrar
         # e conectar usuario do cadastro
-        form.save()
+        user = self._user_form(form)
+        email_message = self._make_confirmation_message(user)
+        self._send_confirmation(email_message)
         return super(CadastroView, self).form_valid(form)
 
     def form_invalid(self, form, *args, **kwargs):
