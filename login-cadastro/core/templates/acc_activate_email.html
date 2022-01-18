@@ -1,0 +1,7 @@
+{% autoescape off %}
+Olá, {{ user.get_full_name }}.
+
+Para confirmar seu cadastro, clique no seguinte link:
+
+http://{{ domain }}{% url 'activate' uidb64=uid token=token %}
+{% endautoescape %}
