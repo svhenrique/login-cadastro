@@ -101,7 +101,6 @@ class ActivateView(TemplateView):
             user.save()
             return redirect('success')
         else:
-            user.delete()
             return redirect('failure')
 
 class LogarView(LoginView):
