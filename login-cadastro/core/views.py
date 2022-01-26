@@ -12,13 +12,6 @@ from .tokens import account_activation_token
 from .email_sender import EmailMessage
 from django.contrib.auth import get_user_model
 
-"""
-Criar class based view para página de registro e deixar página vinculada ao admin
-quieto
-
-link para ajuda: https://www.youtube.com/watch?v=Ev5xgwndmfc&feature=emb_title
-"""
-
 UserModel = get_user_model()
 
 class IndexView(TemplateView):
@@ -31,9 +24,9 @@ class IndexView(TemplateView):
         return super(IndexView, self).get(request, *args, **kwargs)
 
 
-class CadastroView(FormView):
+class RegisterView(FormView):
 
-    template_name = 'cadastro.html'
+    template_name = 'register.html'
     form_class = CustomUsuarioCreateForm
     success_url = reverse_lazy('index')
 
@@ -64,7 +57,7 @@ class CadastroView(FormView):
 
     def get(self, request, *args, **kwargs):
         if request.user.is_anonymous:
-            return super(CadastroView, self).get(request, *args, **kwargs)
+            return super(RegisterView, self).get(request, *args, **kwargs)
         return redirect('index')
 
     def form_valid(self, form, *args, **kwargs):
@@ -73,10 +66,11 @@ class CadastroView(FormView):
         user = self._user_form(form)
         email_message = self._make_confirmation_message(user)
         self._send_confirmation(*email_message)
-        return super(CadastroView, self).form_valid(form)
+        return super(RegisterView, self).form_valid(form)
 
     def form_invalid(self, form, *args, **kwargs):
-        return super(CadastroView, self).form_invalid(form)
+        return super(RegisterView, self).form_invalid(form)
+
 
 class ActivateView(TemplateView):
 
@@ -103,15 +97,3 @@ class ActivateView(TemplateView):
         else:
             return redirect('failure')
 
-class LogarView(LoginView):
-
-    template_name = 'login.html'
-    form_class = CustomLoginForm
-
-    # nao e necessario por o success_url pois ja existe uma rota de redirecionamento
-    # chamada LOGIN_REDIRECT_URL em settings.py
-
-
-class SucessoView(TemplateView):
-
-    template_name = 'sucesso.html'
