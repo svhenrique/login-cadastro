@@ -1,18 +1,19 @@
 
 from django.urls import path, include
-from .views import CadastroView, LogarView, IndexView, ActivateView
+from .views import RegisterView, IndexView, ActivateView
 from .forms import CustomPasswordResetForm
 from django.views.generic.base import TemplateView
 from django.contrib.auth import views as auth_views
+from .forms import CustomLoginForm
 
 urlpatterns = [
     path('', IndexView.as_view(), name="index"),
 
-    path('conta/cadastro/', CadastroView.as_view(), name="cadastro"),
-    path('conta/cadastro/success', TemplateView.as_view(template_name='sucesso.html'), name="success"),
-    path('conta/cadastro/fracasso', TemplateView.as_view(template_name='fracasso.html'), name="failure"),
+    path('conta/cadastro/', RegisterView.as_view(), name="register"),
+    path('conta/cadastro/success', TemplateView.as_view(template_name='success.html'), name="success"),
+    path('conta/cadastro/failure', TemplateView.as_view(template_name='failure.html'), name="failure"),
 
-    path('conta/login/', LogarView.as_view(), name="login"),
+    path('conta/login/', auth_views.LoginView.as_view(template_name='login.html', form_class=CustomLoginForm), name="login"),
     path('conta/logout/', auth_views.LogoutView.as_view(), name='logout'),
 
     path('conta/cadastro/<uidb64>/<token>/', ActivateView.as_view(), name='activate'),
