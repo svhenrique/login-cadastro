@@ -90,7 +90,6 @@ def delete_image_pre_user_change(instance, **kwargs):
         if user_in_db.image:
             if user_in_db.image != instance.image:
                 if os.path.isfile(user_in_db.image.path):
-                    print('image deletada |'*50)
                     os.remove(user_in_db.image.path)
 
 

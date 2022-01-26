@@ -22,7 +22,6 @@ def validate_file_format(archive):
 
 def validate_file_size(archive):
     file_size = archive.size
-    print(file_size)
     if file_size > max_size:
         raise ValidationError(mensagens_erros['max_size'])
     return archive
